@@ -13,7 +13,8 @@ CREATE TABLE Product_Item(
   ProductID INT,
   ItemNum INT,
   QuantityUsed INT,
-  CONSTRAINT CheckQuantityUsedCHECK (QuantityUsed >= 0),
+  CONSTRAINT CheckQuantityUsedCHECK 
+    CHECK (QuantityUsed >= 0),
   CONSTRAINT ProductFK
           FOREIGN KEY(ProductID) 
               References Product(ProductID)
@@ -37,7 +38,8 @@ CREATE TABLE Sale(
   ProductID INT,
   ReceiptNumber INT,
   QuantitySold INT,
-  CONSTRAINT CheckQuantitySoldCHECK (QuantitySold >= 0),
+  CONSTRAINT CheckQuantitySoldCHECK 
+    CHECK (QuantitySold >= 0),
   CONSTRAINT ProductFK
           FOREIGN KEY(ProductID) 
               References Product(ProductID)
