@@ -4,7 +4,7 @@
 CREATE TABLE Product(
   ProductID INT, 
   ProductDescription VARCHAR(200),
-  CONSTRAINT ProductPK PRIMARY KEY (ProductID),
+  CONSTRAINT ProductPK PRIMARY KEY (ProductID)
 );
 
 --Junction table for Product and Item tables, contains foreign keys from their respective table's
@@ -20,15 +20,15 @@ CREATE TABLE Product_Item(
                     ON DELETE CASCADE,    --Here to keep the database consistent.
     CONSTRAINT ItemFK
           FOREIGN KEY(ItemNum) 
-                References Item(ItemNUm)
-                    ON DELETE CASCADE,    --Here to keep the database consistent.
+                References Item(ItemNum)
+                    ON DELETE CASCADE    --Here to keep the database consistent.
 );
 
 --Item table that has a primary key of ItemNum and contains the attribute ItemDescription
 CREATE TABLE Item(
   ItemNum INT,  --Did not include the NULL constraint as primary keys are inheriently NULL             
   ItemDescription VARCHAR(200),
-  CONSTRAINT ItemPK PRIMARY KEY (ItemNum), 
+  CONSTRAINT ItemPK PRIMARY KEY (ItemNum)
 );
 
 --Junction Table for Product and Receipt tables! It contains foreign keys from their respective tables 
@@ -45,12 +45,12 @@ CREATE TABLE Sale(
     CONSTRAINT ReceiptFK
           FOREIGN KEY(ReceiptNumber) 
                 References Receipt(ReceiptNumber)
-                    ON DELETE CASCADE,    --Here to keep the database consistent.
+                    ON DELETE CASCADE    --Here to keep the database consistent.
 );
 
 --Receipt table that has a primary key of ReceiptNumber and the attribute SalesDate
 CREATE TABLE Receipt(
   ReceiptNumber INT, --Did not include the NULL constraint as primary keys are inheriently NULL
   SalesDate DATE,
-  CONSTRAINT ItemPK PRIMARY KEY (ItemNum),
+  CONSTRAINT ReceiptNumberPK PRIMARY KEY (ReceiptNumber)
 );
