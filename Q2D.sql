@@ -27,9 +27,9 @@ CREATE TABLE Room(
   RoomRate DECIMAL(4,2),
   CONSTRAINT RoomPK PRIMARY KEY (RoomNo),
   CONSTRAINT RoomNoCHECK
-    CHECK (RoomNo >= 100 && RoomNo <= 999),
+    CHECK (RoomNo >= 100 AND RoomNo <= 999),
   CONSTRAINT RoomRateCHECK
-    CHECK (RoomRate >= 30.00 && RoomRate <= 100.00)
+    CHECK (RoomRate >= 30.00 AND RoomRate <= 100.00)
 );
 
 --Physician table with primary key of PhyID, attribute of PhysName, and foreign keys of PhysDebt
@@ -37,9 +37,9 @@ CREATE TABLE Room(
 CREATE TABLE Physician(
   PhysID INT,
   PhysName VARCHAR(50)
-    CONSTRAINT PhysName NOT NULL,
+    CONSTRAINT PhysNameNULL NOT NULL,
   PhysDept INT,
-  TreatID INT,
+  TreatID DECIMAL(4,2),
   CONSTRAINT PhysIDPK PRIMARY KEY (PhysID),
   CONSTRAINT PhysDeptFK
           FOREIGN KEY(PhysDept) 
@@ -61,7 +61,7 @@ ALTER TABLE Department
 
 CREATE TABLE Patient(
   PatientID INT,  --Added for a unique primary key for patients
-  PatientName VARVHAR(50)
+  PatientName VARCHAR(50)
     CONSTRAINT NameNULL NOT NULL,
   PatientAddress VARCHAR(200)
     CONSTRAINT AddressNULL NOT NULL,
@@ -81,11 +81,4 @@ CREATE TABLE Patient(
               References Physician(PhysID)
                     ON DELETE CASCADE    --Here to keep the database consistent.
 );
-
-
-
-
-
-
-
 
